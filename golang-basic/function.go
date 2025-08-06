@@ -37,6 +37,10 @@ func sumAll(numbers ...int) int {
 	return total
 }
 
+func getGoodbye(name string) string {
+	return "Good bye " + name
+}
+
 func main(){
 	// Memanggil function tanpa return
 	sayHelloTo("John", "Doe")
@@ -68,4 +72,9 @@ func main(){
 	numbers := []int{10,10,10}
 	total2 := sumAll(numbers...)
 	fmt.Println(total2)
+
+	// Memanggil function dengan return value
+	// Dapat disimpan ke variable
+	goodbye := getGoodbye
+	fmt.Println(goodbye("John"))
 }
