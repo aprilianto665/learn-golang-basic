@@ -26,6 +26,17 @@ func getCompleteName() (firstName3, middleName3,lastName3 string){
 	return firstName3, middleName3,lastName3
 }
 
+// Function dengan variadic parameters
+// Dapat menerima jumlah parameter yang tidak terbatas
+// Parameter variadic harus diletakkan di akhir
+func sumAll(numbers ...int) int {
+	total := 0
+	for _, number := range numbers {
+		total += number
+	}
+	return total
+}
+
 func main(){
 	// Memanggil function tanpa return
 	sayHelloTo("John", "Doe")
@@ -45,4 +56,16 @@ func main(){
 	// Memanggil function dengan named return values
 	firstName3, middleName3, lastName3 := getCompleteName()
 	fmt.Println(firstName3, middleName3,lastName3)
+
+	// Memanggil function dengan variadic parameters
+	// Dapat mengirimkan jumlah parameter yang tidak terbatas
+	total := sumAll(10,10,10,10,10)
+	fmt.Println(total)
+
+	// Dapat mengirimkan slice dengan operator ...
+	// Operator ... akan mengubah slice menjadi variadic parameters
+	// Jadi, slice harus memiliki tipe data yang sama dengan parameter variadic
+	numbers := []int{10,10,10}
+	total2 := sumAll(numbers...)
+	fmt.Println(total2)
 }
