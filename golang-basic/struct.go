@@ -9,6 +9,12 @@ type Customer struct {
 	Age           int    // Field dengan tipe berbeda
 }
 
+// Method: function yang terikat pada struct tertentu
+// (customer Customer) adalah receiver - menunjukkan method ini milik struct Customer
+func (customer Customer) sayHello(name string) {
+	fmt.Println("Hello", name, "my name is", customer.Name)
+}
+
 func main() {
 	// Cara 1: Deklarasi struct kosong kemudian assign nilai per field
 	var customer Customer
@@ -30,4 +36,7 @@ func main() {
 	// Kurang readable, tidak disarankan untuk struct dengan banyak field
 	jane := Customer{"Jane Doe", "456 Oak Avenue", 25}
 	fmt.Println(jane) // Output: {Jane Doe 456 Oak Avenue 25}
+	
+	// Memanggil method pada struct instance
+	jane.sayHello("John") // Output: Hello John my name is Jane Doe
 }
