@@ -23,18 +23,13 @@ func (e *notFoundError) Error() string {
 }
 
 func SaveData(id string, data any) error {
-	// Validasi: jika id kosong, return validation error
 	if id == "" {
-		// Return pointer ke validationError struct
 		return &validationError{"validation error"}
 	}
-
-	// Cek keberadaan data: jika id bukan "john", return not found error
 	if id != "john" {
 		return &notFoundError{"not found error"}
 	}
 
-	// Jika semua validasi berhasil, return nil (no error)
 	return nil
 }
 
