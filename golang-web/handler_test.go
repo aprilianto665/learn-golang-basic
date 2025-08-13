@@ -61,3 +61,26 @@ func TestServeMux(t *testing.T){
 		panic(err)
 	}
 }
+
+// TestRequest - test untuk mengakses informasi dari HTTP request
+func TestRequest(t *testing.T){
+	var handler http.HandlerFunc = func(writer http.ResponseWriter, request *http.Request){
+		// fmt.Fprintln(writer, data) - menulis data ke writer dengan newline di akhir
+		// Parameter 1: writer (io.Writer) - tempat menulis output, di sini ke HTTP response
+		// Parameter 2: data - nilai yang akan ditulis (request.Method = GET/POST/dll)
+		fmt.Fprintln(writer, request.Method)
+		// Sama seperti di atas, tapi menulis RequestURI (path + query string)
+		// Contoh: /users?name=john akan menampilkan "/users?name=john"
+		fmt.Fprintln(writer, request.RequestURI)
+	}
+
+	server := http.Server{
+		Addr:    "localhost:8080",
+		Handler: handler,
+	}
+
+	err := server.ListenAndServe()
+	if err != nil {
+		panic(err)
+	}
+}
