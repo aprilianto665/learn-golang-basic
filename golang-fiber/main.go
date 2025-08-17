@@ -8,9 +8,9 @@ import (
 
 func main() {
 	app := fiber.New(fiber.Config{
-		IdleTimeout: time.Second * 5,
+		IdleTimeout:  time.Second * 5,
 		WriteTimeout: time.Second * 5,
-		ReadTimeout: time.Second * 5,
+		ReadTimeout:  time.Second * 5,
 	})
 
 	err := app.Listen(":3000")
