@@ -6,8 +6,11 @@ import (
 	"testing"
 )
 
+// LogJson - Fungsi helper untuk mengkonversi data ke format JSON dan menampilkannya
+// Parameter: data interface{} - menerima tipe data apapun
+// Proses: menggunakan json.Marshal() untuk encoding ke JSON bytes, lalu convert ke string
 func LogJson(data interface{}){
-	bytes, err := json.Marshal(data)
+	bytes, err := json.Marshal(data) // Marshal mengkonversi Go data ke JSON format
 	if err != nil {
 		panic(err)
 	}
