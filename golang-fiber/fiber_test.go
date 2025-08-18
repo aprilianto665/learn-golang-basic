@@ -95,13 +95,13 @@ func TestRouteParameter(t *testing.T) {
 
 func TestFormRequest(t *testing.T) {
 
-	app.Get("/hello", func(ctx *fiber.Ctx) error {
+	app.Post("/hello", func(ctx *fiber.Ctx) error {
 		name := ctx.FormValue("name")
 		return ctx.SendString("Hello " + name)
 	})
 
 	body := strings.NewReader("name=Rusdi")
-	request := httptest.NewRequest("GET", "/hello", body)
+	request := httptest.NewRequest("POST", "/hello", body)
 	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	response, err := app.Test(request)
 	assert.Nil(t, err)
