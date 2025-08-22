@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -11,7 +12,14 @@ func main() {
 		IdleTimeout:  time.Second * 5,
 		WriteTimeout: time.Second * 5,
 		ReadTimeout:  time.Second * 5,
+		Prefork: true,
 	})
+
+	if fiber.IsChild(){
+		fmt.Println("I'm child proccess")
+	} else {
+		fmt.Println("I'm parent proccess")
+	}
 
 	err := app.Listen(":3000")
 	if err != nil {
